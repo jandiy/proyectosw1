@@ -1,39 +1,46 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+## Admin Panel component
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+This is a web application that is build on top of laravel and uses many packages but the ones worth mentioning are
+https://github.com/Zizaco/entrust and https://github.com/spatie/laravel-backup.
+Its main purpose is to allow programmers to speed up the development
+of their apps by giving an already made admin panel which can be implemented on top of your existing system.
+to install you must download and do a composer install, migrate and php artisan serve
+  
+  
+ The admin panel is currently linked to a small system to manage medicaments in a pharmacy
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### How to use
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+- Clone the repository with __git clone__
+- Run __composer install__
+- Copy __.env.example__ file to __.env__ and edit database credentials there
+- Add a second database coneccion, in this project i used remotemysql.com like this
 
-## Learning Laravel
+DB_CONNECTION_SECOND=mysql
+DB_HOST_SECOND=remotemysql.com
+DB_PORT_SECOND=3306
+DB_DATABASE_SECOND=yMbc196y39
+DB_USERNAME_SECOND=yMbc196y39
+DB_PASSWORD_SECOND=XZTuyYjXHV
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+To successfully use this remote database service normally you would have to add a couple of things in your config folder however it is already set up to use remote MySQL. If you are going to use another remote database, make sure to add all its credentials needed for it to work. In the remote database there is a table with the same structure as the bitacora in the migrations files
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+- Run __php artisan key:generate__
+- Run __php artisan migrate:refresh --seed__
 
-## Contributing
+If you open the seed folder you will see that by default a single user is created with all the permissions that will allow him to enter the system. Just place that username and password in the login screen. 
+There is a function that saves the activity of the user to the remote database, this function can be found in the controller controller.php is called registrarEnBitacora(accion). 
+Before leaving the app folder notice that I have made a model for the remote database 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+- That's it - load the homepage, use the username and password created by default and you can start using it
+Note: if you dont wish to use a second remote database that is fine too!
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+---
+
+
 
 ## License
 
