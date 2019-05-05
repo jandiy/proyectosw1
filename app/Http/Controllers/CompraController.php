@@ -79,7 +79,7 @@ class CompraController extends Controller
 
 
 
-        self::registrarEnBitacora("Se registro una nueva compra");
+        // self::registrarEnBitacora("Se registro una nueva compra");
 
         return redirect()->route('compras.index')
             ->with('success','Compra Registrada Exitosamente'); 

@@ -85,7 +85,7 @@ class MedicamentoController extends Controller
         $medicamento->categoria_id=$request->input('categoria_nombre');
 
         $medicamento->save();
-        self::registrarEnBitacora("Se registro un nuevo Medicamento");
+        // self::registrarEnBitacora("Se registro un nuevo Medicamento");
         return redirect()->route('medicamentos.index')
             ->with('success','Medicamento Registrado Exitosamente'); 
     }
@@ -173,7 +173,7 @@ class MedicamentoController extends Controller
         $medicamento->categoria_id=$request->input('categoria_nombre');
         $medicamento->save();
 
-        self::registrarEnBitacora("Se registro un nuevo medicamento");
+        // self::registrarEnBitacora("Se registro un nuevo medicamento");
         return redirect()->route('medicamentos.index')
             ->with('success','Medicamento Actualizado Exitosamente'); 
         

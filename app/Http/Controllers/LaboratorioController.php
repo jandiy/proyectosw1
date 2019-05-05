@@ -55,7 +55,7 @@ class LaboratorioController extends Controller
         $laboratorio->pais_id=$request->input('pais_id');        
         $laboratorio->save();
 
-        self::registrarEnBitacora("Se registro un nuevo laboratorio");
+        // self::registrarEnBitacora("Se registro un nuevo laboratorio");
         return redirect()->route('laboratorios.index')
             ->with('success','Laboratorio Registrado Exitosamente'); 
     }

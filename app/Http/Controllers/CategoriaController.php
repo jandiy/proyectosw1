@@ -50,7 +50,7 @@ class CategoriaController extends Controller
         $categoria->subcategoria = $request->input('subcategoria');
         $categoria->save();
 
-        self::registrarEnBitacora("Se registro una nueva categoria");
+        // self::registrarEnBitacora("Se registro una nueva categoria");
 
         return redirect()->route('categorias.index')
             ->with('success','Categoria Creada Exitosamente');    

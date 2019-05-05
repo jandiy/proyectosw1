@@ -46,7 +46,7 @@ class AccionterapeuticaController extends Controller
         $accion->nombre  = $request->input('nombre');        
         $accion->save();
         
-        self::registrarEnBitacora("Se registro una nueva accion terapeutica");
+        // self::registrarEnBitacora("Se registro una nueva accion terapeutica");
         return redirect()->route('acciones.index')
             ->with('success','Accion terapeutica Registrada Exitosamente'); 
     }
