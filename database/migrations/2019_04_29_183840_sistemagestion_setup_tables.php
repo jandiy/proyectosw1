@@ -14,12 +14,10 @@ class SistemagestionSetupTables extends Migration
     public function up()
     {
         
-        Schema::create('empleados', function (Blueprint $table) {
-            $table->increments('idempleado');            
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->increments('id');            
             $table->string('nombre')->nullable();    
-            $table->string('departamento')->nullable();  
-            $table->float('sueldo')->nullable();  
-            $table->string('sexo')->nullable();                        
+            $table->string('subcategoria')->nullable();  
             $table->timestamps();
         });
 
