@@ -49,7 +49,7 @@
 
 
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
+<script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
@@ -75,6 +75,7 @@
         $('#example').DataTable( {
             "searching": true,
             "lengthMenu": [[5,10,20,100, -1], [5,10,20,100, "Todo"]],
+             responsive: true,
             dom: 'Bfrtip',
 
             buttons: [
@@ -102,7 +103,7 @@
                 },
                 {
                     extend: "excel",
-                    text: 'Excel',
+                    text: '<i class="fa fa-fw fa-file-excel-o"></i>',
                     tittleAttr:'excel',
                     exportOptions:{
                         columns : ':visible'
@@ -111,7 +112,7 @@
                 },
                 {
                     extend: "pdf",
-                    text: 'PDF',
+                    text: '<i class="fa fa-fw fa-file-pdf-o"></i>',
                     tittleAttr:'Pdf',
                     exportOptions:{
                         columns : ':visible'
@@ -120,7 +121,7 @@
                 },
                 {
                     extend: "print",
-                    text: 'Imprimir',
+                    text: '<i class="fa fa-fw fa-print"></i>',
                     tittleAttr:'Print',
                     exportOptions:{
                         columns : ':visible'
@@ -178,6 +179,7 @@
         $('#exampleTransferencia').DataTable( {
             "searching": true,
             "lengthMenu": [[5,10,20,100, -1], [5,10,20,100, "Todo"]],
+             responsive: true,
             dom: 'Bfrtip',
 
             buttons: [
@@ -205,7 +207,7 @@
                 },
                 {
                     extend: "excel",
-                    text: 'Excel',
+                    text: '<i class="fa fa-fw fa-file-excel-o"></i>',
                     tittleAttr:'excel',
                     exportOptions:{
                         columns : ':visible'
@@ -214,7 +216,7 @@
                 },
                 {
                     extend: "pdf",
-                    text: 'PDF',
+                    text: '<i class="fa fa-fw fa-file-pdf-o"></i>',
                     tittleAttr:'Pdf',
                     exportOptions:{
                         columns : ':visible'
@@ -223,7 +225,7 @@
                 },
                 {
                     extend: "print",
-                    text: 'Imprimir',
+                    text: '<i class="fa fa-fw fa-print"></i>',
                     tittleAttr:'Print',
                     exportOptions:{
                         columns : ':visible'
@@ -252,6 +254,40 @@
                     "sPrevious": "Anterior"
                 }   ,
             },
+
+        } );
+
+
+
+        $('#example1').DataTable( {
+            "searching": true,
+            "lengthMenu": [[5,10,20,100, -1], [5,10,20,100, "Todo"]],
+             responsive: true,
+            dom: 'Bfrtip',
+
+            buttons: [
+                {extend:'pageLength'
+                    ,text:'Cantidad a mostrar'},
+               
+                'colvis'
+            ],
+            
+
+        } );
+        $('#example2').DataTable( {
+            "searching": true,
+            "lengthMenu": [[5,10,20,100, -1], [5,10,20,100, "Todo"]],
+             responsive: true,
+            dom: 'Bfrtip',
+
+            buttons: [
+                {extend:'pageLength'
+                    ,text:'Cantidad a mostrar'},
+               
+                'colvis'
+            ],
+            order:[[0,"desc"]],
+            
 
         } );
         // Setup - add a text input to each footer cell

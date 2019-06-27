@@ -40,6 +40,18 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>Telefono:</strong>
+                    {!! Form::text('telefono', null, array('placeholder' => 'telefono','class' => 'form-control')) !!}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Direccion:</strong>
+                    {!! Form::text('direccion', null, array('placeholder' => 'direccion','class' => 'form-control')) !!}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Old Password:</strong>
                     {!! Form::password('password2', array('placeholder' => 'Old Password','class' => 'form-control')) !!}
                 </div>

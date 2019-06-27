@@ -15,8 +15,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = DB::table('categorias')                
-                ->select('categorias.id','categorias.nombre','categorias.subcategoria')
+        $categorias = DB::table('categoria')                
+                ->select('id','nombre','subcategoria')
                 ->get();
         return view('categorias.index',compact('categorias'));
     }
@@ -113,7 +113,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('categorias')->where('id',$id)->delete();
+        DB::table('categoria')->where('id',$id)->delete();
         return redirect()->route('categorias.index')
             ->with('success','Categoria Borrada Exitosamente');
    

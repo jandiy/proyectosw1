@@ -56,8 +56,8 @@
             @endpermission
 
             
-            
-            <li class="active treeview">
+            @permission('realizar_parametrizacion') 
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-lock"></i> <span>Parametrizacion</span>
                         <span class="pull-right-container">
@@ -65,20 +65,46 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li ><a href="{{ route('categorias.index') }}"><i class="fa fa-circle-o"></i> Categorias</a></li>                    
-                    <li ><a href="{{ route('paises.index')}}"><i class="fa fa-circle-o"></i> Paises</a></li>
-                    <li ><a href="{{ route('laboratorios.index')}}"><i class="fa fa-circle-o"></i> Laboratorios</a></li>
-                    <li ><a href="{{ route('acciones.index')}}"><i class="fa fa-circle-o"></i> Accion Terapeutica</a></li>
-                    <li ><a href="{{ route('lotes.index')}}"><i class="fa fa-circle-o"></i> Lote</a></li>
-                    <li ><a href="{{ route('posiciones.index')}}"><i class="fa fa-circle-o"></i> Posicion\Hubicacion</a></li>
-                    <li ><a href="{{ route('provedores.index')}}"><i class="fa fa-circle-o"></i> Provedor</a></li>
-                    <li ><a href="{{ route('compras.index')}}"><i class="fa fa-circle-o"></i> Compra</a></li>
-                    <li ><a href="{{ route('medicamentos.index')}}"><i class="fa fa-circle-o"></i> Medicamentos</a></li>
+                   <li ><a href="{{ route('categorias.index') }}"><i class="fa fa-circle-o"></i>Categoria</a></li>
+                   <li ><a href="{{ route('marcas.index') }}"><i class="fa fa-circle-o"></i>Marca</a></li>
+                   <li ><a href="{{ route('medidas.index') }}"><i class="fa fa-circle-o"></i>Medida</a></li>
+                   <li ><a href="{{ route('productos.index') }}"><i class="fa fa-circle-o"></i>Producto</a></li>
+                   <li ><a href="{{ route('ofertas.index') }}"><i class="fa fa-circle-o"></i>Oferta</a></li>
                 </ul>            
             </li>
-            
+            @endpermission
+             @permission('realizar_compras') 
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-fw fa-cart-plus"></i><span>Compras</span>
+                        <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                
+                   <li ><a href="{{ route('productos.index') }}"><i class="fa fa-circle-o"></i>Producto</a></li>
+                   <li ><a href="{{ route('carts.index') }}"><i class="fa fa-circle-o"></i>Carrito</a></li>
+                   <li ><a href="{{ route('carts.indexB') }}"><i class="fa fa-circle-o"></i>Mis Carritos</a></li>
+                   <li ><a href="{{ route('calificaciones.index') }}"><i class="fa fa-circle-o"></i>Top 5</a></li>
+                </ul>            
+            </li>
+            @endpermission
+            @permission('realizar_entregas') 
+            <li class="treeview">
+                <a href="#">
+                   <i class="fa fa-fw fa-bus"></i> <span>Entregas</span>
+                        <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                   <li ><a href="{{ route('entregas.index') }}"><i class="fa fa-circle-o"></i>Entrega</a></li>
+                   <li ><a href="{{ route('entregas.indexB') }}"><i class="fa fa-circle-o"></i>Mis Entregas</a></li>
+                </ul>            
+            </li>
 
-
+              @endpermission
 
             
         </ul>

@@ -43,6 +43,7 @@ class UserController extends Controller
     public function create()
     {
         // $roles = Role::pluck('name','id');
+        
         $roles = DB::table('roles')                               
         ->where('roles.name','<>','Admin')
         ->pluck('name','id');        
@@ -61,7 +62,9 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'telefono'=>'required',
+            'direccion'=>'required'
         ]);
 
         $input = $request->all();
@@ -123,7 +126,9 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'telefono'=>'required',
+            'direccion'=>'required'
         ]);
 
         $input = $request->all();
