@@ -17,6 +17,18 @@
                 <strong>Cliente:</strong>
                 {{ $cart->name }}
                 </div>
+                <div class="form-group">
+                
+                
+                    @foreach($trans as $key => $t)
+                    
+                    @if($t->carrito_id == $cart->id)
+                    <strong>Transaccion:</strong>
+                    <a href="https://ropsten.etherscan.io/tx/{{$t->txtHash}}">Aqui</a>
+                    @endif
+                    @endforeach
+                </div>
+
                 
 				<div id="map" style="width:100%;height:400px;"></div>
 <?php
@@ -86,12 +98,14 @@ function initMap() {
                             echo "<strong>Precio:</strong>&nbsp;".$value->precio."&nbsp;";
                             echo "<strong>Cant:</strong>&nbsp;".$value->cantidad."&nbsp;";
                             echo "<strong>Sub:</strong>&nbsp;".$value->subtotal."</br>";
-                        
+                             
                             
                            
                     }
                 }
+                
                 ?>
+                 
                 <div class="form-group">
                 	<strong>Total:</strong>
                 	{{ $cart->total}}

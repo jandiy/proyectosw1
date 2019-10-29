@@ -55,6 +55,7 @@ Route::post('carrito/add/{id}',['as'=>'carts.add','uses'=>'CartController@add'])
 Route::get('carrito',['as'=>'carts.index','uses'=>'CartController@index']);
 Route::delete('carrito/{id}',['as'=>'carts.destroy','uses'=>'CartController@destroy']);
 Route::post('carrito/create',['as'=>'carts.store','uses'=>'CartController@store']);
+Route::post('carrito/createB',['as'=>'carts.storeB','uses'=>'CartController@storeB']);
 Route::get('carrito/miscarritos',['as'=>'carts.indexB','uses'=>'CartController@indexB']);
 Route::get('entregas',['as'=>'entregas.index','uses'=>'EntregaController@index']);
 Route::patch('entregas/{id}',['as'=>'entregas.update','uses'=>'EntregaController@update']);

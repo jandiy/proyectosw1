@@ -126,7 +126,9 @@ class CartController extends Controller
         $user = Auth::user();
         $carts =DB::select("select c.id, c.total, u.name, u.latitud, u.longitud, u.telefono, u.email, c.fecha
             from carrito as c, users as u
-            where c.user_id=u.id and u.id=".$user->id);        
+            where  c.user_id=u.id and u.id=".$user->id); 
+       $trans=DB::select("select * from pago as p");
+         //   dd($trans);       
         $detalles =DB::select("select c.id, p.nombre as producto, p.precio, dc.cantidad, c.total, m.nombre as marca, (p.precio*dc.cantidad) as subtotal
             from carrito as c, detalle_carrito as dc, producto as p, marca as m 
             where dc.producto_id=p.codigo and dc.carrito_id=c.id and p.marca_id=m.id "); 
@@ -138,8 +140,59 @@ class CartController extends Controller
             from carrito as c 
             where c.id not in (select e.carrito_id from entrega as e)");  
                         
-         return view('carts.indexB',compact('carts','detalles','asignadas' ,'noasignadas'));
+         return view('carts.indexB',compact('carts','detalles','asignadas' ,'noasignadas','trans'));
 
      
+    }
+
+
+    public function storeB(Request $request){
+        $this->validate($request, [
+           
+            'latitudes'=> 'required', 
+            'longitudes'=> 'required', 
+                             
+        ]);
+       
+       
+        $carts= DB::select("select p.codigo, p.nombre, p.precio, dc.cantidad, (dc.cantidad*p.precio) as subtotal, dc.id
+            from detalle_carrito as dc, producto as p 
+            where dc.producto_id=p.codigo and dc.carrito_id is null");
+        $total=0;
+        if(count($carts)>0){
+            foreach ($carts as $key => $value) {
+            $total=$total+$value->subtotal*1;
+            }
+
+            $carrito = new Carrito();
+            $carrito->total=$total;
+            $user= Auth::user();
+            $carrito->user_id=$user->id;
+            $time= Carbon::now('America/La_Paz');
+            $carrito->fecha = $time->toDateString();
+            $carrito->save();
+
+
+
+            $ahora=Auth::user();
+            $actualizar= User::find($ahora->id);
+            $actualizar->longitud=$request->input('longitudes');
+            $actualizar->latitud=$request->input('latitudes');
+            $actualizar->update();
+
+
+            foreach ($carts as $key => $value) {
+            $detalle = DetalleCarrito::find($value->id);
+            $detalle->carrito_id=$carrito->id;
+            $detalle->update();
+
+            }
+
+            
+
+        }
+
+         return redirect()->route('carts.index')
+            ->with('success','Compra Realizada Exitosamente');
     }
 }

@@ -231,6 +231,8 @@ function setMapa (coords1,coords2 )
         //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
         document.getElementById("coords1").value = this.getPosition().lat();
         document.getElementById("coords2").value = this.getPosition().lng();
+        document.getElementById("coords3").value = this.getPosition().lat();
+        document.getElementById("coords4").value = this.getPosition().lng();
     });
 }
 //callback al hacer clic en el marcador lo que hace es quitar y poner la animacion BOUNCE
@@ -280,7 +282,7 @@ function toggleBounce() {
 
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'Ethereum')">Ethereum</button>
-  <button class="tablinks" onclick="openCity(event, 'Token-RCP-20')">Token-RCP-20</button>  
+  <button class="tablinks" onclick="openCity(event, 'Token-RCP-20')">Pago Efectivo</button>  
 </div>
 
 <div id="Ethereum" class="tabcontent">
@@ -436,13 +438,30 @@ window.onclick = function(event) {
 
 
 <div id="Token-RCP-20" class="tabcontent">
-  <h3>Token-RCP-20</h3>
-  <p>Introduzca sus datos</p>
-  <div class="form-group">
-                    <strong>Direccion de cuenta:</strong>
-                    {!! Form::text('cuenta',null, array('id'=>'cuenta','placeholder' => '0x0000000','class' => 'form-control')) !!}
-                </div>   
-  <button>test2</button>
+  <h3>Pago en Efectivo</h3>
+  {!! Form::open(array('route' => 'carts.storeB','method'=>'POST')) !!}
+  <p>Se esta realizando pago por efectivo</p>
+  
+  <div style="display: none;">
+
+         <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="form-group">
+                  <strong>Latitude:</strong>
+                  {!! Form::text('latitudes', null, array('class' => 'form-control', 'id'=>'coords3')) !!}
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                      <strong>Longitude:</strong>
+                      {!! Form::text('longitudes', null, array('class' => 'form-control', 'id'=>'coords4')) !!}
+                  </div>
+          </div>
+          
+          
+        </div>
+        <button type="sumbit" class="btn btn-primary">Confirmar</button>
+  {!! Form::close() !!}
 </div>
 
 <script>
@@ -471,9 +490,7 @@ window.onclick = function(event) {
 
 
 
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button id="finalizarPago"type="submit" class="btn btn-primary">Finalizar Pago</button>
-        </div>
+        
     </div>
 
 
@@ -553,7 +570,7 @@ window.onclick = function(event) {
           //   // Build the transaction
           const txObject = {
             nonce: web3.utils.toHex(txCount),
-            to: account2,
+            to: account1,
             value: web3.utils.toHex(web3.utils.toWei(total, "ether")),
             gasLimit: web3.utils.toHex(21000),
             gasPrice: web3.utils.toHex(web3.utils.toWei("1000", "gwei"))

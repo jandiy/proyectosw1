@@ -1,9 +1,5 @@
 <!-- jQuery 2.2.3 -->
-<!-- <script src="{{secure_asset('jQuery/dist/jquery.min.js')}}"></script> -->
-<script
-  src="https://code.jquery.com/jquery-2.2.3.min.js"
-  integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
-  crossorigin="anonymous"></script>
+<script src="{{asset('jQuery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -64,7 +60,6 @@
 <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
 <script>
 
     $(".selections").select2({
